@@ -4,14 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="bottom"
-    android:layout_marginBottom="40dip">
+    android:gravity="bottom">
 
-    <SeekBar
-        android:id="@+id/seek_speed"
+    <com.stamoulohta.douchebag.StrobeView
+        android:id="@+id/strobe_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:thumb="@drawable/thumb_image" />
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:background="@color/lightOn" />
+</LinearLayout>
