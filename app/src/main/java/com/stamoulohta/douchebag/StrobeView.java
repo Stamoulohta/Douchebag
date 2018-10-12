@@ -16,18 +16,16 @@ class StrobeView extends View implements View.OnTouchListener {
     Handler handler;
     private int hRad = rad / 2;
     private int x = 0, y = 0, i = 0;
-    private boolean show = false;
-    private boolean active = false;
     private Paint[] yinYang = new Paint[2];
     private int[] vColors = new int[]{R.color.lightOff, R.color.lightOn};
+    private boolean show = false;
+    private boolean active = false;
 
     public StrobeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        int val = 0x00;
         for (int i = 0; i <= 1; i++) {
             yinYang[i] = new Paint(Paint.ANTI_ALIAS_FLAG);
-            if (i != 0) val = 0x210513;
-            yinYang[i].setARGB(0xff, val, val, val);
+            yinYang[i].setColor(vColors[i]);
         }
         setOnTouchListener(this);
         handler = new Handler();
@@ -36,7 +34,7 @@ class StrobeView extends View implements View.OnTouchListener {
     @Override
     public void onDraw(Canvas canvas) {
         if (show) {
-            canvas.drawCircle(x, y, rad, this.yinYang[i]);
+            canvas.drawCircle(x, y, rad, yinYang[i]);
         }
     }
 

@@ -22,6 +22,7 @@ class FlashLightController {
 
     FlashLightController(Context context) {
         this.handler = new Handler();
+        // Newer devices
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
                 cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
@@ -31,6 +32,7 @@ class FlashLightController {
             } catch (CameraAccessException e) {
                 e.printStackTrace();
             }
+            // Older devices
         } else {
             camera = Camera.open();
             parameters = camera.getParameters();
@@ -38,6 +40,7 @@ class FlashLightController {
     }
 
     void strobeOn() {
+        // Newer devices
         if (cameraManager != null) {
             handler.postDelayed(new Runnable() {
                 @SuppressLint("NewApi")
@@ -52,6 +55,7 @@ class FlashLightController {
                     if (active) handler.postDelayed(this, interval);
                 }
             }, 0);
+            // Older devices
         } else {
             handler.postDelayed(new Runnable() {
                 @Override
