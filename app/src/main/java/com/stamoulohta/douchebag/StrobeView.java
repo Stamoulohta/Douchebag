@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -73,9 +72,8 @@ class StrobeView extends View implements View.OnTouchListener {
             @Override
             public void run() {
                 i = (i + 1) % 2;
-                Log.d("INDEX", "" + i);
                 setBackgroundResource(vColors[i]);
-                if (active) handler.postDelayed(this, flc.interval);
+                if (active) handler.postDelayed(this, flc.state ? flc.duration : flc.interval);
             }
         }, 0);
     }

@@ -12,13 +12,14 @@ import android.os.Handler;
 class FlashLightController {
 
     int interval = 100;
+    int duration = 20;
     boolean active = false;
     private Handler handler;
     private Camera camera;
     private Camera.Parameters parameters;
     private CameraManager cameraManager;
     private String cameraId;
-    private boolean state = false;
+    boolean state = false;
 
     FlashLightController(Context context) {
         this.handler = new Handler();
@@ -49,10 +50,11 @@ class FlashLightController {
                     state = !state;
                     try {
                         cameraManager.setTorchMode(cameraId, state && active);
-                    } catch (CameraAccessException e) {
+                    } catch (IllegalArgumentException | CameraAccessException e) {
+                        // TODO: change the camera id or inform the user.
                         e.printStackTrace();
                     }
-                    if (active) handler.postDelayed(this, interval);
+                    if (active) handler.postDelayed(this, state ? duration : interval);
                 }
             }, 0);
             // Older devices
@@ -65,7 +67,7 @@ class FlashLightController {
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                         camera.setParameters(parameters);
                         camera.startPreview();
-                        if (active) handler.postDelayed(this, interval);
+                        if (active) handler.postDelayed(this, state ? duration : interval);
                     } else {
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                         camera.setParameters(parameters);
