@@ -12,6 +12,7 @@ import android.os.Handler;
 class FlashLightController {
 
     private Handler handler;
+    private boolean state = false;
     private Camera camera;
     private Camera.Parameters parameters;
     private CameraManager cameraManager;
@@ -43,15 +44,15 @@ class FlashLightController {
                 @SuppressLint("NewApi")
                 @Override
                 public void run() {
-                    ProxyTimer.state = !ProxyTimer.state;
+                    state = !state;
                     try {
-                        cameraManager.setTorchMode(cameraId, ProxyTimer.state && ProxyTimer.active);
+                        cameraManager.setTorchMode(cameraId, state && ProxyTimer.active);
                     } catch (IllegalArgumentException | CameraAccessException e) {
                         // TODO: change the camera id or inform the user.
                         e.printStackTrace();
                     }
-                    if (ProxyTimer.active || ProxyTimer.state)
-                        handler.postDelayed(this, ProxyTimer.state ? ProxyTimer.duration : ProxyTimer.interval);
+                    if (ProxyTimer.active || state)
+                        handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.interval);
                 }
             }, 0);
             // Older devices
@@ -59,13 +60,13 @@ class FlashLightController {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    ProxyTimer.state = !ProxyTimer.state;
-                    if (ProxyTimer.state && ProxyTimer.active) {
+                    state = !state;
+                    if (state && ProxyTimer.active) {
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                         camera.setParameters(parameters);
                         camera.startPreview();
                         if (ProxyTimer.active)
-                            handler.postDelayed(this, ProxyTimer.state ? ProxyTimer.duration : ProxyTimer.interval);
+                            handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.interval);
                     } else {
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                         camera.setParameters(parameters);

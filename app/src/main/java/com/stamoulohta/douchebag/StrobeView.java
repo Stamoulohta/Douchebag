@@ -7,9 +7,7 @@ import android.view.View;
 
 class StrobeView extends View {
 
-    private final String TAG = getClass().getSimpleName();
-
-    Handler handler;
+    private Handler handler;
     private int i = 0;
     private int[] vColors = new int[]{R.color.lightOff, R.color.lightOn};
 
@@ -25,8 +23,8 @@ class StrobeView extends View {
             public void run() {
                 i = (i + 1) % 2;
                 setBackgroundResource(vColors[i]);
-                if (ProxyTimer.active || ProxyTimer.state)
-                    handler.postDelayed(this, ProxyTimer.state ? ProxyTimer.duration : ProxyTimer.interval);
+                if (ProxyTimer.active || i == 1)
+                    handler.postDelayed(this, i == 1 ? ProxyTimer.duration : ProxyTimer.interval);
             }
         }, 0);
     }

@@ -9,7 +9,6 @@ class ProxyTimer implements View.OnTouchListener {
     static int duration = 20;
     static int interval = 100;
     static boolean active = false;
-    static boolean state = false;
 
     private FlashLightController flashController;
 
