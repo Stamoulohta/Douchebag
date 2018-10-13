@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+# Release dir
+app/release
+
 # Gradle files
 .gradle/
 build/
