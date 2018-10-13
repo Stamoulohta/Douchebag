@@ -9,7 +9,7 @@ class StrobeView extends View {
 
     private Handler handler;
     private int i = 0;
-    private int[] vColors = new int[]{R.color.lightOff, R.color.lightOn};
+    private int[] strobeColors = new int[]{R.color.lightOff, R.color.lightOn};
 
     public StrobeView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -22,7 +22,7 @@ class StrobeView extends View {
             @Override
             public void run() {
                 i = (i + 1) % 2;
-                setBackgroundResource(vColors[i]);
+                setBackgroundResource(strobeColors[i]);
                 if (ProxyTimer.active || i == 1)
                     handler.postDelayed(this, i == 1 ? ProxyTimer.duration : ProxyTimer.interval);
             }
