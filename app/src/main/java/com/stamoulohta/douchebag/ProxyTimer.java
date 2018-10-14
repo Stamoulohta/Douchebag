@@ -6,6 +6,8 @@ import android.view.View;
 
 class ProxyTimer implements View.OnTouchListener {
 
+    private static final int modifier = 130;
+
     static int duration = 20;
     static int interval = 100;
     static boolean active = false;
@@ -28,7 +30,7 @@ class ProxyTimer implements View.OnTouchListener {
                 active = false;
         }
 
-        interval = 110 - (int) ((event.getX() / v.getWidth()) * 100);
+        interval = modifier - (int) ((event.getX() / v.getWidth()) * 100);
         return true;
     }
 }
