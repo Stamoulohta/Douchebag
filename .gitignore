@@ -1,3 +1,6 @@
+# Temp exclusions
+app/src/main/java/com/stamoulohta/douchebag/gles
+
 # Built application files
 *.apk
 *.ap_
