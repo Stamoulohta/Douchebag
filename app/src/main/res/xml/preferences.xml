@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress AndroidElementNotAllowed -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:asp="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_cat_flash">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="CAMERA"
+            android:summary="@string/pref_camera_s"
+            android:title="@string/pref_camera_t" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="SCREEN"
+            android:summary="@string/pref_screen_s"
+            android:title="@string/pref_screen_t" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_cat_freq">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="TOUCH"
+            android:summary="@string/pref_touch_s"
+            android:title="@string/pref_touch_t" />
+
+        <SeekBarPreference
+            android:defaultValue="120"
+            android:key="FREQ"
+            android:max="200"
+            android:summary="@string/pref_freq_s"
+            android:title="@string/pref_freq_t"
+            asp:min="50" />
+
+        <SeekBarPreference
+            android:defaultValue="120"
+            android:key="MOD"
+            android:max="300"
+            android:summary="@string/pref_mod_s"
+            android:title="@string/pref_mod_t"
+            asp:min="150" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
