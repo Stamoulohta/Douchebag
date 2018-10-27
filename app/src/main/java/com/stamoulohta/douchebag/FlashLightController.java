@@ -52,7 +52,7 @@ class FlashLightController {
                         e.printStackTrace();
                     }
                     if (ProxyTimer.active || state)
-                        handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.interval);
+                        handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.frequency);
                 }
             }, 0);
             // Older devices
@@ -66,7 +66,7 @@ class FlashLightController {
                         camera.setParameters(parameters);
                         camera.startPreview();
                         if (ProxyTimer.active)
-                            handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.interval);
+                            handler.postDelayed(this, state ? ProxyTimer.duration : ProxyTimer.frequency);
                     } else {
                         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
                         camera.setParameters(parameters);
