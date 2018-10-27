@@ -24,7 +24,7 @@ class StrobeView extends View {
                 i = (i + 1) % 2;
                 setBackgroundResource(strobeColors[i]);
                 if (ProxyTimer.active || i == 1)
-                    handler.postDelayed(this, i == 1 ? ProxyTimer.duration : ProxyTimer.interval);
+                    handler.postDelayed(this, i == 1 ? ProxyTimer.duration : ProxyTimer.frequency);
             }
         }, 0);
     }

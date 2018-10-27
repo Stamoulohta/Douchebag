@@ -6,15 +6,15 @@
     <string name="pref_cat_flash">Flash Options</string>
     <string name="pref_cat_freq">Frequency Options</string>
     <string name="pref_camera_t">Camera</string>
-    <string name="pref_camera_s">Flash camera\'s led torch.</string>
+    <string name="pref_camera_s">flash camera\'s led torch.</string>
     <string name="pref_screen_t">Screen</string>
-    <string name="pref_screen_s">Flash the screen.</string>
+    <string name="pref_screen_s">flash the screen.</string>
     <string name="pref_touch_t">Touch Control</string>
-    <string name="pref_touch_s">Control the frequency by touch.</string>
-    <string name="pref_freq_t">Frequency</string>
-    <string name="pref_freq_s">Interval frequency.</string>
+    <string name="pref_touch_s">control the frequency by touch.</string>
+    <string name="pref_freq_t">Frequency Hz</string>
+    <string name="pref_freq_s">interval frequency.</string>
     <string name="pref_mod_t">Modifier</string>
-    <string name="pref_mod_s">Frequency modifier.</string>
+    <string name="pref_mod_s">modifier ±50 = Hz.</string>
 
     <!-- ACTIONS -->
     <string name="action_settings">Settings</string>
